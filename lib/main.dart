@@ -1,6 +1,11 @@
+import 'package:async_example_saegis/auth_controller.dart';
+import 'package:async_example_saegis/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -13,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: LoginScreen(),
     );
   }
 }
@@ -26,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var _title = 'ABC';
+
   Future<void> threeSecondsDelay() async {
     await Future.delayed(Duration(seconds: 3), () {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -52,6 +59,40 @@ class _MyHomePageState extends State<MyHomePage> {
         content: Text(number.toString()),
       ),
     );
+
+    setState(() {
+      _title = 'New Name';
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant MyHomePage oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -60,7 +101,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text('Async'),
+        title: Text(_title),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await AuthController().signOut();
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => LoginScreen(),
+              ));
+            },
+            icon: Icon(Icons.logout),
+          )
+        ],
       ),
       body: Center(
         child: ElevatedButton(

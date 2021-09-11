@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "212371781619",
+    "project_id": "saegis-dev",
+    "storage_bucket": "saegis-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212371781619:android:18fdd8314ddce4d5c4c486",
+        "android_client_info": {
+          "package_name": "com.example.async_example_saegis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212371781619-06rh68nhfgrnp8agj72im5ltor2dki3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkpEzHWX1VRMekxfpw5mJEz5umhqkv05U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212371781619-06rh68nhfgrnp8agj72im5ltor2dki3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
